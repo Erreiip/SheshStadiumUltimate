@@ -9,5 +9,5 @@ public interface IStage {
     public void resize();
     public Stage getStage();
     public void draw(SpriteBatch batch);
-    public Array<Actor> getActors();
+    public void clear();
 }

@@ -1,8 +1,10 @@
 package com.sheshstadiumultimate.game;
 
+import com.sheshstadiumultimate.camera.Camera;
 import com.sheshstadiumultimate.jeu.stage.IStage;
 import com.sheshstadiumultimate.jeu.stage.lobby.Lobby;
 import com.sheshstadiumultimate.jeu.stage.menu.Menu;
+import com.sheshstadiumultimate.jeu.stage.menu.MenuClient;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -48,6 +50,7 @@ public class SheshStadiumUltimate extends ApplicationAdapter {
 
 		
 		this.batch = new SpriteBatch();
+		
 
 	}
 
@@ -60,6 +63,7 @@ public class SheshStadiumUltimate extends ApplicationAdapter {
 
 		stage.resize();
 		stage.draw(this.batch);
+		Camera.dessiner(batch);
 		
 
 		this.batch.end();
@@ -72,12 +76,14 @@ public class SheshStadiumUltimate extends ApplicationAdapter {
 	}
 
 	public void changerEtat(String etat) {
-		for ( Actor a  : this.stage.getActors() ){
-			a.remove();
-		}
+		this.stage.clear();
 
 		if ( etat.equals("LOBBY_SERVEUR")) {
 			this.stage = new Lobby();
+		}
+
+		if ( etat.equals("MENU_CLIENT")) {
+			this.stage = new MenuClient(this);
 		}
 
 				

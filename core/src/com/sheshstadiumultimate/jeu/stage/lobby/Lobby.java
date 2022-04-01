@@ -61,5 +61,11 @@ public class Lobby implements IStage{
         this.stage.getViewport().update(SheshStadiumUltimate.getWidth(), SheshStadiumUltimate.getHeight(), true);
     }
 
+    public void clear() {
+        this.stage.clear();
+    }
+
+
+
         
 }

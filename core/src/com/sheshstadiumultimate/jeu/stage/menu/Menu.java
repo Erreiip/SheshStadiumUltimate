@@ -42,7 +42,6 @@ public class Menu implements IStage{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 ctrl.changerEtat("LOBBY_SERVEUR");
-                System.out.println("bbb");
             }
 		});
 
@@ -82,7 +81,10 @@ public class Menu implements IStage{
         return this.stage.getActors();
     }
 
-    
+
+    public void clear() {
+        this.stage.clear();
+    }
 
     public void debug( float x, float y) {
         this.lblDebug.setText("x : " + x + " y : " + y );
