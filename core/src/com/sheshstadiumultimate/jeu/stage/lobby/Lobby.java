@@ -36,9 +36,6 @@ public class Lobby implements IStage{
 
         this.stage.addActor(lblIp);
         this.stage.act();
-
-        
-
         
     }
 
