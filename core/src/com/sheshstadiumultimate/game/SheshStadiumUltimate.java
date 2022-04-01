@@ -6,6 +6,7 @@ import com.sheshstadiumultimate.jeu.stage.menu.Menu;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
@@ -71,9 +72,15 @@ public class SheshStadiumUltimate extends ApplicationAdapter {
 	}
 
 	public void changerEtat(String etat) {
+		for ( Actor a  : this.stage.getActors() ){
+			a.remove();
+		}
+
 		if ( etat.equals("LOBBY_SERVEUR")) {
 			this.stage = new Lobby();
 		}
+
+				
 	}
 
 	public static int getHeight() {

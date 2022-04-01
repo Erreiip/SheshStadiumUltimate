@@ -1,11 +1,13 @@
 package com.sheshstadiumultimate.jeu.stage.menu;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 import com.sheshstadiumultimate.game.SheshStadiumUltimate;
 import com.sheshstadiumultimate.jeu.stage.IStage;
 
@@ -40,6 +42,7 @@ public class Menu implements IStage{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 ctrl.changerEtat("LOBBY_SERVEUR");
+                System.out.println("bbb");
             }
 		});
 
@@ -73,6 +76,10 @@ public class Menu implements IStage{
 
     public void resize() {
         this.stage.getViewport().update(SheshStadiumUltimate.getWidth(), SheshStadiumUltimate.getHeight(), true);
+    }
+
+    public Array<Actor> getActors() {
+        return this.stage.getActors();
     }
 
     

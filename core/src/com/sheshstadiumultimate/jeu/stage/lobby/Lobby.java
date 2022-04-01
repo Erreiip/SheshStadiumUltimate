@@ -1,10 +1,12 @@
 package com.sheshstadiumultimate.jeu.stage.lobby;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.sheshstadiumultimate.game.SheshStadiumUltimate;
 import com.sheshstadiumultimate.jeu.stage.IStage;
 import com.sheshstadiumultimate.serveur.Serveur;
@@ -50,6 +52,12 @@ public class Lobby implements IStage{
 
     public void setIp( String ip) {
         this.ip = ip;
+        if ( this.lblIp != null )
+            this.lblIp.setText(this.ip);
+    }
+
+    public Array<Actor> getActors() {
+        return this.stage.getActors();
     }
 
     public void resize() {
