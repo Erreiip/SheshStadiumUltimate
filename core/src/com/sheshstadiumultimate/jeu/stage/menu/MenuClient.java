@@ -1,20 +1,20 @@
 package com.sheshstadiumultimate.jeu.stage.menu;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
+
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.Array;
 import com.sheshstadiumultimate.game.SheshStadiumUltimate;
 import com.sheshstadiumultimate.jeu.stage.IStage;
 
 
 import static com.badlogic.gdx.Gdx.*;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MenuClient implements IStage {
@@ -26,13 +26,23 @@ public class MenuClient implements IStage {
     private TextButton    btnBack;
     private TextField     txtField;
     
-    public MenuClient(SheshStadiumUltimate ctrl) {
+    public MenuClient(SheshStadiumUltimate ctrl1) {
+
+        this.ctrl = ctrl1;
 
         this.stage = new Stage();
 
         this.txtField = new TextField("" ,new Skin(files.internal("assets/skins/craftacular/skin/craftacular-ui.json")));
 		this.txtField.setSize(200,50 );
 		this.txtField.setPosition(graphics.getWidth()/2 - this.txtField.getWidth()/2, graphics.getHeight()/2 - this.txtField.getHeight()/2 );
+        this.txtField.addListener(new InputListener() {
+            @Override
+            public boolean keyUp(InputEvent event, int keycode) {
+                if (keycode == Input.Keys.ENTER) {
+                    Client.connecter(txtField.getText());
+                }
+                return false;
+            }});
 
         this.btnBack = new TextButton("X",new Skin(files.internal("assets/skins/craftacular/skin/craftacular-ui.json")));
 		this.btnBack.setSize(50,50 );
@@ -41,7 +51,7 @@ public class MenuClient implements IStage {
         this.btnBack.addListener(new ClickListener(){
             
             public void clicked(InputEvent event, float x, float y) {
-                
+                ctrl.changerEtat("MENU");
             }
         });
 

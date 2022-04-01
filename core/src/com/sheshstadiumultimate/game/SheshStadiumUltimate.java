@@ -77,14 +77,21 @@ public class SheshStadiumUltimate extends ApplicationAdapter {
 
 	public void changerEtat(String etat) {
 		this.stage.clear();
+		this.stage = null;
 
 		if ( etat.equals("LOBBY_SERVEUR")) {
-			this.stage = new Lobby();
+			this.stage = new Lobby(this);
 		}
 
 		if ( etat.equals("MENU_CLIENT")) {
 			this.stage = new MenuClient(this);
 		}
+
+		if ( etat.equals("MENU")) {
+			this.stage = new Menu(this);
+		}
+
+		input.setInputProcessor(stage.getStage());
 
 				
 	}
