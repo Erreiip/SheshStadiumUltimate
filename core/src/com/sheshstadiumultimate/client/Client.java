@@ -23,7 +23,7 @@ public class Client {
 
         try {
 
-            Client.reg = LocateRegistry.getRegistry(8451);
+            Client.reg = LocateRegistry.getRegistry(ip, 8451);
 
             Remote r = Client.reg.lookup("rmi://" + ip + ":505050/Jeu");
 
