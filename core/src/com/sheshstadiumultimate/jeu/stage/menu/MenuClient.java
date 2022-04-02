@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.sheshstadiumultimate.client.Client;
 import com.sheshstadiumultimate.game.SheshStadiumUltimate;
 import com.sheshstadiumultimate.jeu.stage.IStage;
 
@@ -39,7 +40,9 @@ public class MenuClient implements IStage {
             @Override
             public boolean keyUp(InputEvent event, int keycode) {
                 if (keycode == Input.Keys.ENTER) {
-                    Client.connecter(txtField.getText());
+                    if (Client.connecter(txtField.getText())) {
+                        ctrl.changerEtat("LOBBY_SERVEUR");
+                    }
                 }
                 return false;
             }});

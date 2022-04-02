@@ -10,11 +10,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.sheshstadiumultimate.client.Client;
 import com.sheshstadiumultimate.game.SheshStadiumUltimate;
 import com.sheshstadiumultimate.jeu.stage.IStage;
 import com.sheshstadiumultimate.serveur.Serveur;
 
 import static com.badlogic.gdx.Gdx.*;
+
+import java.net.InetAddress;
+import java.rmi.registry.LocateRegistry;
 
 
 public class Lobby implements IStage{
@@ -34,12 +38,19 @@ public class Lobby implements IStage{
 
         this.stage = new Stage( );
 
-        Serveur.lancerServeur(this);
+        
+
+        if ( Client.getReg() == null ) {
+            Serveur.lancerServeur(this);
+            Client.connecter(this.ip);
+        }
+
+        
 
         this.lblIp = new Label(this.ip,new Skin(files.internal("assets/skins/craftacular/skin/craftacular-ui.json")));
 		this.lblIp.setPosition(graphics.getWidth()/2 - this.lblIp.getWidth()/2, graphics.getHeight() - this.lblIp.getHeight());
         this.lblIp.setAlignment(Align.center);
-        this.lblIp.setFontScale((int)(SheshStadiumUltimate.getWidth()*0.001), (int)(SheshStadiumUltimate.getHeight()*0.001));
+        this.lblIp.setFontScale((SheshStadiumUltimate.getWidth()*0.0005f), (SheshStadiumUltimate.getHeight()*0.001f));
 
         this.btnBack = new TextButton("X",new Skin(files.internal("assets/skins/craftacular/skin/craftacular-ui.json")));
 		this.btnBack.setSize(50,50 );

@@ -10,6 +10,7 @@ import com.sheshstadiumultimate.jeu.stage.lobby.Lobby;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.net.URL;
 
 public class Serveur extends Thread{
@@ -36,11 +37,7 @@ public class Serveur extends Thread{
         Serveur.ctrl = ctrl;
 
         try {
-            URL whatismyip = new URL("http://checkip.amazonaws.com");
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                                    whatismyip.openStream()));
-
-            Serveur.ip = in.readLine(); 
+            Serveur.ip = InetAddress.getLocalHost().getHostName();
         } catch ( Exception e) {
 
             Serveur.ip = "Non connecté";
