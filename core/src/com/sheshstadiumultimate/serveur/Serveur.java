@@ -48,7 +48,7 @@ public class Serveur extends Thread{
             Serveur.reg = LocateRegistry.createRegistry(8451);
 
             Serveur.serveurJeu = new Jeu();
-            Serveur.url = "rmi://" + Serveur.ip + "/Jeu";
+            Serveur.url = "rmi://" + Serveur.ip + ":505050/Jeu";
             Serveur.reg.bind(Serveur.url, Serveur.serveurJeu);
             
         } catch (Exception e) {

@@ -42,6 +42,9 @@ public class MenuClient implements IStage {
                 if (keycode == Input.Keys.ENTER) {
                     if (Client.connecter(txtField.getText())) {
                         ctrl.changerEtat("LOBBY_SERVEUR");
+                        System.out.println("connecté");
+                    } else {
+                        System.out.println("pas connecté");
                     }
                 }
                 return false;

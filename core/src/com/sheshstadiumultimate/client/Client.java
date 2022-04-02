@@ -6,7 +6,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import com.sheshstadiumultimate.jeu.stage.IRmiObjJeu;
-import com.sheshstadiumultimate.jeu.stage.Jeu;
 
 public class Client {
 
@@ -26,7 +25,7 @@ public class Client {
 
             Client.reg = LocateRegistry.getRegistry(8451);
 
-            Remote r = Client.reg.lookup("rmi://" + ip + "/Jeu");
+            Remote r = Client.reg.lookup("rmi://" + ip + ":505050/Jeu");
 
             if ( r instanceof IRmiObjJeu) {
                 Client.jeuCLient = ((IRmiObjJeu) r);
@@ -46,7 +45,7 @@ public class Client {
         if ( obj.equals("")     ) return null;
 
         try {
-            Remote r = Client.reg.lookup("rmi://" + Client.ip + "/" + obj);
+            Remote r = Client.reg.lookup("rmi://" + Client.ip + "/:505050" + obj);
             if ( r instanceof IRmiObjJeu) {
                 return (IRmiObjJeu) r;
             }
