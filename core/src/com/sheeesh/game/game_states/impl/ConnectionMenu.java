@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.sheeesh.game.Sheeesh;
 import com.sheeesh.game.game_states.inter.GameState;
+import com.sheeesh.game.net.Client;
 
 public class ConnectionMenu implements GameState {
     
@@ -72,6 +73,9 @@ public class ConnectionMenu implements GameState {
             public void keyTyped(TextField textField, char key) {
                 if ((key == '\r' || key == '\n')) {
                     ConnectionMenu.main.setIsLoading(true);
+                    Client.connectToIP(textField.getMessageText());
+                    ConnectionMenu.main.setIsLoading(false);
+                    if (Client.getGame() != null) ConnectionMenu.main.lobbyMenu();
                 }
             }
         });

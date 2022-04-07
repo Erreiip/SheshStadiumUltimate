@@ -25,9 +25,14 @@ public class Client {
 
     public static void connectLocalhost() {
 
+        Client.connectToIP("127.0.0.1");
+    }
+
+    public static void connectToIP(String ip) {
+
         try {
 
-            Client.game = (IGame) Naming.lookup(Server.URL + "/game");
+            Client.game = (IGame) Naming.lookup(String.format("rmi://%s:%d/game", ip, Server.PORT));
             Client.controller = Client.game.join();
         } 
         catch (Exception e) {
