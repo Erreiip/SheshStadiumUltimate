@@ -74,7 +74,7 @@ public class PlayerImpl extends UnicastRemoteObject implements Player {
 
             if (this.accelerationY > 0f && this.inAir) {
 
-                System.out.println(this.accelerationY);
+                System.out.println(this.accelerationY + " " + this.pos.getY());
                 this.pos.setY((float) (this.pos.getY() + (this.accelerationY*dt)));
                 this.accelerationY = (float) (this.accelerationY - this.accelerationY*0.5f*dt);
             } 
@@ -87,7 +87,7 @@ public class PlayerImpl extends UnicastRemoteObject implements Player {
             if (this.pos.getX() - this.scale.getScaleX()/2f <   0f) {this.pos.setX(0f   + this.scale.getScaleX()/2f); this.accelerationX = 0f;}
             if (this.pos.getX() + this.scale.getScaleX()/2f > 100f) {this.pos.setX(100f - this.scale.getScaleX()/2f); this.accelerationX = 0f;}
 
-            if (this.pos.getY() - this.scale.getScaleY()/2f <   0f) {this.pos.setY(  0f); this.accelerationY = 0f;}
+            if (this.pos.getY() - this.scale.getScaleY()/2f <   0f) {this.pos.setY(  0f); /*this.accelerationY = 0f;*/}
             if (this.pos.getY() + this.scale.getScaleY()/2f > 100f) {this.pos.setY(100f);}
         } 
         catch (Exception err) {
